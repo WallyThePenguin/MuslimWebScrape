@@ -17,7 +17,7 @@ module.exports = class extends Command {
 
   async run (message, [...params]) {
     let ayah = 1
-    for (let surah = 40; surah <= 114; surah++) {
+    for (let surah = 41; surah <= 114; surah++) {
       let goToNextSurah = false
       while (!goToNextSurah) {
         const data = await fetch.get(`https://quran.com/${surah}/${ayah}`).catch(() => null)
@@ -39,7 +39,7 @@ module.exports = class extends Command {
         else await this.client.providers.default.create('quran', docName, { [ayahName]: verse })
         console.log(`Surah #${surah} Verse #${ayah} has been added to the database.`)
         ayah++
-        await util.sleep(3000)
+        await util.sleep(30000)
       }
     }
   }
